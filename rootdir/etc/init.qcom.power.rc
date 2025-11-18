@@ -89,6 +89,16 @@ on boot
     write /dev/cpuset/background/cpus 0-7
     write /dev/cpuset/system-background/cpus 0-7
 
+    write /dev/cpuset/background/cpus 4-7
+    write /dev/cpuset/system-background/cpus 4-7
+    write /dev/cpuset/foreground/boost/cpus 4-7
+    write /dev/cpuset/foreground/cpus 4-7
+    write /dev/cpuset/top-app/cpus 4-7
+    write /dev/cpuset/restricted/cpus 4-7
+    write /dev/cpuset/foreground_window/cpus 4-7
+    write /dev/cpuset/camera-daemon/cpus 4-7
+    write /dev/cpuset/audio-app/cpus 4-7
+
     # Disable console_suspend to get better logging for kernel crashes
     write /sys/module/printk/parameters/console_suspend N
 
@@ -132,7 +142,6 @@ on property:init.svc.vendor.charger=running
     start vendor.power_off_alarm
     start vendor.poweroffm64
     mount tmpfs tmpfs /data
-    start vendor.thermal-engine
     setprop vendor.usb.controller a600000.dwc3
     setprop sys.usb.configfs 1
 
@@ -143,7 +152,7 @@ on enable-low-power
     write /proc/irq/default_smp_affinity "f"
 
     # Core control parameters
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
     write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
     write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
@@ -217,6 +226,16 @@ on enable-low-power
     write /dev/cpuset/foreground/cpus 0-3,6-7
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/restricted/cpus 0-3
+
+    write /dev/cpuset/background/cpus 4-7
+    write /dev/cpuset/system-background/cpus 4-7
+    write /dev/cpuset/foreground/boost/cpus 4-7
+    write /dev/cpuset/foreground/cpus 4-7
+    write /dev/cpuset/top-app/cpus 4-7
+    write /dev/cpuset/restricted/cpus 4-7
+    write /dev/cpuset/foreground_window/cpus 4-7
+    write /dev/cpuset/camera-daemon/cpus 4-7
+    write /dev/cpuset/audio-app/cpus 4-7
 
     # Turn off scheduler boost at the end
     write /proc/sys/kernel/sched_boost 0
