@@ -388,6 +388,10 @@ on boot
     chmod 0600 /sys/devices/common_touch/touch/cover_mode
     restorecon /sys/devices/common_touch/touch/cover_mode
 
+    chown system system /sys/bus/platform/devices/synaptics_tcm.0/synaptics_tcm/dynamic_config/stamina
+    chmod 0600 /sys/bus/platform/devices/synaptics_tcm.0/synaptics_tcm/dynamic_config/stamina
+    restorecon /sys/bus/platform/devices/synaptics_tcm.0/synaptics_tcm/dynamic_config/stamina
+
     # for atmel
     chown system system /sys/devices/virtual/input/lge_touch/glove_mode
     chmod 0600 /sys/devices/virtual/input/lge_touch/glove_mode

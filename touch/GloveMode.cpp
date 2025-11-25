@@ -17,7 +17,8 @@ namespace touch {
 namespace V1_0 {
 namespace implementation {
 
-const std::string kGloveModePath = "/sys/devices/common_touch/touch/glove_mode";
+//const std::string kGloveModePath = "/sys/devices/common_touch/touch/glove_mode";
+const std::string kGloveModePath = "/sys/bus/platform/devices/synaptics_tcm.0/synaptics_tcm/dynamic_config/stamina";
 
 Return<bool> GloveMode::isEnabled() {
     std::ifstream file(kGloveModePath);
@@ -25,13 +26,15 @@ Return<bool> GloveMode::isEnabled() {
 
     file >> enabled;
 
-    return enabled;
+    //return enabled;
+    return !enabled;
 }
 
 Return<bool> GloveMode::setEnabled(bool enabled) {
     std::ofstream file(kGloveModePath);
 
-    file << enabled << std::flush;
+    //file << enabled << std::flush;
+    file << !enabled << std::flush;
 
     return !file.fail();
 }
