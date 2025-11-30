@@ -149,7 +149,10 @@ on enable-low-power
     # Set the default IRQ affinity to the silver cluster.
     # When a CPU is isolated/hotplugged, the IRQ affinity is adjusted
     # to one of the CPU from the default IRQ affinity mask.
-    write /proc/irq/default_smp_affinity "f"
+    #write /proc/irq/default_smp_affinity "f"
+
+    # Gold only
+    write /proc/irq/default_smp_affinity "f0"
 
     # Core control parameters
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
